@@ -1,2 +1,2 @@
 # maven-hibernate
-Configuração e fundamentos do Hibernate usando Junit
+Configuração e fundamentos do Hibernate usando Maven, Junit,...
