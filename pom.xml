@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>maven-hibernate</groupId>
-  <artifactId>maven-hibernate</artifactId>
+  <groupId>maven-hibernate-2</groupId>
+  <artifactId>maven-hibernate-2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>maven-hibernate</name>
+  <name>maven-hibernate-2</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,21 +15,14 @@
   </properties>
 
   <dependencies>
-     <dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version> 
+      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
     
-    <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-	<dependency>
-	    <groupId>org.postgresql</groupId>
-	    <artifactId>postgresql</artifactId>
-	    <version>42.2.8</version>
-	</dependency>
-    
-	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
@@ -43,7 +36,14 @@
     <artifactId>hibernate-entitymanager</artifactId>
     <version>5.4.4.Final</version>
 </dependency>
+    
+<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>9.4.1212</version>
+</dependency>
 
-
+    
   </dependencies>
 </project>
