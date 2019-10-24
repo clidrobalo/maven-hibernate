@@ -33,10 +33,28 @@ public class TesteHibernateUtil {
 		System.out.println(pessoa.toString());
 	}
 	
-	@Test
+	//@Test
 	public void testPesquisarPorId() {
 		Pessoa pessoa = new Pessoa();
 		pessoa = daoGeneric.pesquisarPorId(1L, pessoa);
+		
+		System.out.println(pessoa.toString());
+	}
+	
+	@Test
+	public void testUpdateMerge() {
+		Pessoa pessoa = new Pessoa();
+		pessoa = daoGeneric.pesquisarPorId(2L, pessoa);
+		
+		//Atualizar dados
+		pessoa.setNome("Neida Cristina");
+		pessoa.setSobreNome("Fernandes");
+		pessoa.setIdade(28);
+		pessoa.setEmail("neida@gmail.com");
+		pessoa.setLogin("Neida Fernandes");
+		pessoa.setSenha("1234Neida");
+		
+		pessoa = daoGeneric.updateMerge(pessoa);
 		
 		System.out.println(pessoa.toString());
 	}

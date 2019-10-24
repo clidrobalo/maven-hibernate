@@ -16,6 +16,15 @@ public class DaoGeneric<E> {
 		transaction.commit();//Salvar no banco de dados
 	}
 	
+	//Salva ou atualiza os dados
+	public E updateMerge(E entidade) {
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		E entity = entityManager.merge(entidade);
+		transaction.commit();//Salvar no banco de dados
+		return entity;
+	}
+	
 	public E pesquisarPorObject(E entity) {
 		Object idEntity = HibernateUtil.getPrimaryKey(entity);
 		
