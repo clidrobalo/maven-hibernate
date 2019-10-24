@@ -1,5 +1,7 @@
 package maven_hibernate_2.maven_hibernate_2;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 
 import dao.DaoGeneric;
@@ -41,7 +43,7 @@ public class TesteHibernateUtil {
 		System.out.println(pessoa.toString());
 	}
 	
-	@Test
+	//@Test
 	public void testUpdateMerge() {
 		Pessoa pessoa = new Pessoa();
 		pessoa = daoGeneric.pesquisarPorId(2L, pessoa);
@@ -58,6 +60,12 @@ public class TesteHibernateUtil {
 		
 		System.out.println(pessoa.toString());
 	}
-	
+
+	@Test
+	public void testeDelete() {
+		Pessoa pessoa = new Pessoa();
+		
+		daoGeneric.deletePorId(4L, pessoa);
+	}
 
 }

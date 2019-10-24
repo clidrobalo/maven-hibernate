@@ -39,4 +39,19 @@ public class DaoGeneric<E> {
 		
 		return entityGeneric;
 	}
+
+	public void deletePorId(Long id, E entity) {
+		EntityTransaction transaction = entityManager.getTransaction();
+		
+		
+		try {
+			transaction.begin();
+			entityManager.createNativeQuery("delete from " + entity.getClass().getSimpleName().toLowerCase() + " where id = " + id).executeUpdate();
+			
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
