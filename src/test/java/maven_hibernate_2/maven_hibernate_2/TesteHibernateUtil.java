@@ -1,5 +1,8 @@
 package maven_hibernate_2.maven_hibernate_2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
@@ -61,11 +64,23 @@ public class TesteHibernateUtil {
 		System.out.println(pessoa.toString());
 	}
 
-	@Test
+	//@Test
 	public void testeDelete() {
 		Pessoa pessoa = new Pessoa();
 		
 		daoGeneric.deletePorId(4L, pessoa);
 	}
+	
+	@Test 
+	public void listar() {
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		pessoas = daoGeneric.listar(Pessoa.class);
+		
+		for(Pessoa pessoa : pessoas) {
+			System.out.println(pessoa.toString());
+			System.out.println("------------------------------------------");
+		}
+	}
+	
 
 }
