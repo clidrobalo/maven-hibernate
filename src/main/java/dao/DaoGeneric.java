@@ -15,4 +15,19 @@ public class DaoGeneric<E> {
 		entityManager.persist(entidade);
 		transaction.commit();//Salvar no banco de dados
 	}
+	
+	public E pesquisarPorObject(E entity) {
+		Object idEntity = HibernateUtil.getPrimaryKey(entity);
+		
+		E entityGeneric = (E) entityManager.find(entity.getClass(), idEntity);
+		
+		return entityGeneric;
+	}
+	
+	public E pesquisarPorId(Long id, E entity) {
+
+		E entityGeneric = (E) entityManager.find(entity.getClass(), id);
+		
+		return entityGeneric;
+	}
 }

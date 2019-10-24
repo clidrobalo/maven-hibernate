@@ -7,9 +7,11 @@ import model.Pessoa;
 
 public class TesteHibernateUtil {
 	
-	@Test
-	public void testeHibernateUtil() {
-		DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+	DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+	
+	//@Test
+	public void testeSalvar() {
+		
 		
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Clid Saniny");
@@ -20,6 +22,23 @@ public class TesteHibernateUtil {
 		pessoa.setIdade(23);
 		
 		daoGeneric.salvar(pessoa);
+	}
+	
+	//@Test
+	public void testPesquisarPorObjecto() {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setId(2L);
+		pessoa = daoGeneric.pesquisarPorObject(pessoa);
+		
+		System.out.println(pessoa.toString());
+	}
+	
+	@Test
+	public void testPesquisarPorId() {
+		Pessoa pessoa = new Pessoa();
+		pessoa = daoGeneric.pesquisarPorId(1L, pessoa);
+		
+		System.out.println(pessoa.toString());
 	}
 	
 

@@ -60,6 +60,12 @@ public class Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", nome=" + nome + ", sobreNome=" + sobreNome + ", idade=" + idade + ", email="
+				+ email + ", login=" + login + ", senha=" + senha + "]";
+	}
+	
 	
 	
 }
