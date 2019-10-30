@@ -83,8 +83,8 @@ public class TesteHibernateUtil {
 	}
 	
 	//Query realizado fora do daoGeneric
-	@Test
-	public void testeQuery() {
+	//@Test
+	public void testeQueryList() {
 		System.out.println("|------- Teste Query ------------|");
 		DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 		List<Pessoa> pessoas = daoGeneric.getEntityManager().createQuery("from Pessoa").getResultList();
@@ -95,5 +95,19 @@ public class TesteHibernateUtil {
 	
 	}
 	
+	//Query realizado fora do daoGeneric
+	@Test
+	public void testeQueryListMaxResult() {
+		System.out.println("|------- Teste Query ------------|");
+		DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+		List<Pessoa> pessoas = daoGeneric.getEntityManager().createQuery("from Pessoa order by sobrenome")
+				.setMaxResults(1)
+				.getResultList();
+	
+		for(Pessoa pessoa: pessoas) {
+			System.out.println(pessoa.toString());
+		}
+	
+	}
 
 }
