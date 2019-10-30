@@ -96,9 +96,9 @@ public class TesteHibernateUtil {
 	}
 	
 	//Query realizado fora do daoGeneric
-	@Test
+	//@Test
 	public void testeQueryListMaxResult() {
-		System.out.println("|------- Teste Query ------------|");
+		System.out.println("|------- Teste Query com maxResult ------------|");
 		DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 		List<Pessoa> pessoas = daoGeneric.getEntityManager().createQuery("from Pessoa order by sobrenome")
 				.setMaxResults(1)
@@ -109,5 +109,20 @@ public class TesteHibernateUtil {
 		}
 	
 	}
+	
+	//Query realizado fora do daoGeneric
+		@Test
+		public void testeQueryComParametro() {
+			System.out.println("|------- Teste Query Com parametro ------------|");
+			DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+			List<Pessoa> pessoas = daoGeneric.getEntityManager().createQuery("from Pessoa where nome = :nome")
+					.setParameter("nome", "Neida Cristina")
+					.getResultList();
+		
+			for(Pessoa pessoa: pessoas) {
+				System.out.println(pessoa.toString());
+			}
+		
+		}
 
 }
