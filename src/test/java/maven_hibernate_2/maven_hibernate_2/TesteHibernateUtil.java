@@ -126,7 +126,7 @@ public class TesteHibernateUtil {
 		}
 		
 		//Query realizado fora do daoGeneric
-		@Test
+		//@Test
 		public void testeQueryRetornandoSomaIdade() {
 			System.out.println("|------- Teste Query Com parametro ------------|");
 			DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
@@ -134,6 +134,19 @@ public class TesteHibernateUtil {
 					.getSingleResult();
 		
 			System.out.println("Soma Idades: " + somaIdades);
+		}
+		
+		@Test
+		public void testeNamedQuery() {
+			System.out.println("|------- Teste Query com NamedQuery na Classe Pessoa ------------|");
+			DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+			
+			List<Pessoa> pessoas = daoGeneric.getEntityManager().createNamedQuery("Pessoa.all").getResultList();
+			
+			for(Pessoa pessoa: pessoas) {
+				System.out.println(pessoa.toString());
+			}
+			
 		}
 
 

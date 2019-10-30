@@ -4,7 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
+
+@NamedQueries({
+	@NamedQuery(name = "Pessoa.all", query = "select p from Pessoa p")
+})
 @Entity
 public class Pessoa {
 	@Id
