@@ -4,6 +4,7 @@
 	<persistence-unit name="maven-hibernate-2">
 		<!-- ********************************************************* -->
 		<class>model.Pessoa</class>
+		<class>model.Telefone</class>
 		<!-- ********************************************************* -->
 		<properties>
 			<!-- Dados coneção com o banco de dados -->
