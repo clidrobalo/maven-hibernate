@@ -71,7 +71,7 @@ public class TesteHibernateUtil {
 		daoGeneric.deletePorId(4L, pessoa);
 	}
 	
-	@Test 
+	//@Test 
 	public void listar() {
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		pessoas = daoGeneric.listar(Pessoa.class);
@@ -80,6 +80,19 @@ public class TesteHibernateUtil {
 			System.out.println(pessoa.toString());
 			System.out.println("------------------------------------------");
 		}
+	}
+	
+	//Query realizado fora do daoGeneric
+	@Test
+	public void testeQuery() {
+		System.out.println("|------- Teste Query ------------|");
+		DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+		List<Pessoa> pessoas = daoGeneric.getEntityManager().createQuery("from Pessoa").getResultList();
+	
+		for(Pessoa pessoa: pessoas) {
+			System.out.println(pessoa.toString());
+		}
+	
 	}
 	
 
