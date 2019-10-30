@@ -9,24 +9,38 @@ import org.junit.jupiter.api.Test;
 
 import dao.DaoGeneric;
 import model.Pessoa;
+import model.Telefone;
 
 public class TesteHibernateUtil {
 	
 	DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
+	DaoGeneric<Telefone> daoGenericTelefone = new DaoGeneric<Telefone>();
 	
 	//@Test
 	public void testeSalvar() {
 		
-		
 		Pessoa pessoa = new Pessoa();
-		pessoa.setNome("Clid Saniny");
-		pessoa.setSobreNome("Robalo");
-		pessoa.setLogin("clid");
+		pessoa.setNome("Pedro Carlos");
+		pessoa.setSobreNome("Lopes Dias");
+		pessoa.setLogin("pedro");
 		pessoa.setSenha("1234");
-		pessoa.setEmail("clid@gmail.com");
-		pessoa.setIdade(23);
+		pessoa.setEmail("pedro@gmail.com");
+		pessoa.setIdade(32);
 		
 		daoGeneric.salvar(pessoa);
+		
+		//Criar regito telefone
+		Telefone telefone1 = new Telefone();
+		telefone1.setNumero("123456");
+		telefone1.setTipo("Movel");
+		telefone1.setPessoa(pessoa);
+		daoGenericTelefone.salvar(telefone1);
+		
+		Telefone telefone2 = new Telefone();
+		telefone2.setNumero("987458");
+		telefone2.setTipo("Casa");
+		telefone2.setPessoa(pessoa);
+		daoGenericTelefone.salvar(telefone2);
 	}
 	
 	//@Test
@@ -111,12 +125,12 @@ public class TesteHibernateUtil {
 	}
 	
 	//Query realizado fora do daoGeneric
-		//@Test
+		@Test
 		public void testeQueryComParametro() {
 			System.out.println("|------- Teste Query Com parametro ------------|");
 			DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 			List<Pessoa> pessoas = daoGeneric.getEntityManager().createQuery("from Pessoa where nome = :nome")
-					.setParameter("nome", "Neida Cristina")
+					.setParameter("nome", "Pedro Carlos")
 					.getResultList();
 		
 			for(Pessoa pessoa: pessoas) {
@@ -136,7 +150,7 @@ public class TesteHibernateUtil {
 			System.out.println("Soma Idades: " + somaIdades);
 		}
 		
-		@Test
+		//@Test
 		public void testeNamedQuery() {
 			System.out.println("|------- Teste Query com NamedQuery na Classe Pessoa ------------|");
 			DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();

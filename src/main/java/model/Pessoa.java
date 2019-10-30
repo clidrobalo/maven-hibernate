@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,8 @@ public class Pessoa {
 	private String login;
 	private String senha;	
 	
-	@OneToMany(mappedBy = "pessoa")
+	//fetch = FetchType.EAGER - Traz os telefones quando realizar a consulta da pessoas
+	@OneToMany(mappedBy = "pessoa", fetch = FetchType.EAGER)
 	private List<Telefone> telefones;
 	
 	public Long getId() {
@@ -74,7 +76,7 @@ public class Pessoa {
 	@Override
 	public String toString() {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", sobreNome=" + sobreNome + ", idade=" + idade + ", email="
-				+ email + ", login=" + login + ", senha=" + senha + "]";
+				+ email + ", login=" + login + ", senha=" + senha + "]\nTelefones: " + telefones.get(0).toString();
 	}
 	
 	public List<Telefone> getTelefones() {
